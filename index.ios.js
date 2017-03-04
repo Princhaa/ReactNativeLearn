@@ -1,102 +1,25 @@
 import React, { Component } from 'react';
-import {AppRegistry, View, Image} from 'react-native';
-import Friends from './__pages/Friends';
-import Timeline from './__pages/Timeline';
-import Chats from './__pages/Chats';
-import More from './__pages/More';
-import {FooterTab, 
-  Tab, 
-  Tabs, 
-  Toast, 
-  Container, 
-  Button, 
-  Header, 
-  Left, 
-  Right, 
-  Icon, 
-  Body, 
-  Title, 
-  Content, 
-  Footer, 
-  Text
-} from 'native-base';
+import {AppRegistry, View, Image, Navigator} from 'react-native';
+import Main from './__pages/Main';
+import Login from './__pages/Login';
 
 
 class AwesomeProject extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      friendsTab: false,
-      chatsTab: true,
-      timeTab: false,
-      moreTab: false,
-      activeTab: "chats",
-      activePage: <Chats/>
-    }
-    
-  }
 
-  onButtonPressed(name){
-    switch(name){
-      case "people" : this.clearState();this.setState({friendsTab: true, activeTab: "people", activePage: <Friends/>}); break;
-      case "chats" : this.clearState(); this.setState({chatsTab: true, activeTab: "chats", activePage: <Chats/>}); break;
-      case "time" : this.clearState(); this.setState({timeTab: true, activeTab: "time", activePage: <Timeline/>}); break;
-      case "more" : this.clearState(); this.setState({moreTab: true, activeTab: "more", activePage: <More/>}); break;
+  renderScene(route, navigator){
+      if (route.name == 'Main'){
+        return <Main navigator={navigator} />
+      }
+      if (route.name == 'Login'){
+        return <Login navigator={navigator} />
+      }
     }
-  }
 
-  clearState(){
-    this.setState({
-      friendsTab: false,
-      chatsTab: false,
-      timeTab: false,
-      moreTab: false
-    });
-  }
-  
   render(){
-    let headerTitle;
-    switch (this.state.activeTab){
-      case "people" : headerTitle = "Friends"; break;
-      case "chats" : headerTitle = "Chats"; break;
-      case "time" : headerTitle = "Timeline"; break;
-      case "more" : headerTitle = "More"; break;
-    }
     return(
-      <Container>
-        <Header>
-          <Left>
-            <Button small light rounded>
-              <Text>Edit</Text>
-            </Button>
-          </Left>
-          <Body>
-            <Title>{headerTitle}</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name = "chatboxes"></Icon>
-            </Button>
-          </Right>
-        </Header>
-        <Content>{this.state.activePage}</Content>
-        <Footer>
-          <FooterTab>
-            <Button active = {this.state.friendsTab} onPress={() => this.onButtonPressed("people")}>
-              <Icon active = {this.state.friendsTab} name="people"/>
-            </Button>
-            <Button active = {this.state.chatsTab} onPress={() => this.onButtonPressed("chats")}>
-              <Icon active = {this.state.chatsTab} name="chatbubbles"/>
-            </Button>
-            <Button active = {this.state.timeTab} onPress={() => this.onButtonPressed("time")}>
-              <Icon active = {this.state.timeTab} name="time"/>
-            </Button>
-            <Button active = {this.state.moreTab} onPress={() => this.onButtonPressed("more")}>
-              <Icon active = {this.state.moreTab} name="more" />
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
+      <Navigator
+        initialRoute={{ name: 'Main'}}
+        renderScene = {this.renderScene}/> 
     )
   }
 }

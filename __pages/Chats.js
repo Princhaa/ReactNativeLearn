@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {Text} from 'native-base';
+import {Text, Button} from 'native-base';
 
 export default class Chats extends Component{
     render(){
         return(
-            <Text>Chats page</Text>
+            <Button onPress={this.props.onForward}>
+                <Text>Login</Text>
+            </Button>
         )
     }
 }
