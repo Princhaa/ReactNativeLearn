@@ -45,7 +45,9 @@ export default class Main extends Component{
   onButtonPressed(name){
     switch(name){
       case "people" : this.clearState();this.setState({friendsTab: true, activeTab: "people", activePage: <Friends/>}); break;
-      case "chats" : this.clearState(); this.setState({chatsTab: true, activeTab: "chats", activePage: <Chats/>}); break;
+      case "chats" : this.clearState(); this.setState({chatsTab: true, activeTab: "chats", activePage: <Chats onForward = {() => {
+            this.goToLogin();
+        }}/>}); break;
       case "time" : this.clearState(); this.setState({timeTab: true, activeTab: "time", activePage: <Timeline/>}); break;
       case "more" : this.clearState(); this.setState({moreTab: true, activeTab: "more", activePage: <More/>}); break;
     }
