@@ -46,11 +46,11 @@ export default class Login extends Component{
                     <Form>
                         <Item floatingLabel>
                             <Label>Username</Label>
-                            <Input/>
+                            <Input />
                         </Item>
                         <Item floatingLabel last>
                             <Label>Password</Label>
-                            <Input/>
+                            <Input secureTextEntry={true}/>
                         </Item>
                     </Form>
                     <Button full style={{marginTop: 15}} onPress = {this.onBackPressed}>
