@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
-import {Text} from 'native-base';
+import {Text,
+    Icon,
+    Fab,
+    View,
+    Button,
+    Container,
+    Content    
+} from 'native-base';
 
 export default class More extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            fabStatus: true
+        }
+    }
+
     render(){
         return(
-            <Text>More page</Text>
+            <Container>
+                <Text>More Page</Text>                
+            </Container>
         )
     }
 }

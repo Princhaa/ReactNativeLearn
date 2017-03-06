@@ -22,10 +22,17 @@ export default class Login extends Component{
     constructor(props){
         super(props);
         this.onBackPressed = this.onBackPressed.bind(this);
+        this.registerButton = this.registerButton.bind(this);
     }
 
     onBackPressed(){
         this.props.navigator.pop();
+    }
+
+    registerButton(){
+        this.props.navigator.push({
+            name: 'Register'
+        })
     }
 
     render(){
@@ -56,6 +63,9 @@ export default class Login extends Component{
                     <Button full style={{marginTop: 15}} onPress = {this.onBackPressed}>
                         <Text>Login</Text>
                     </Button>
+                    <Text onPress = {this.registerButton}>
+                        Don't have account? Register
+                    </Text>
                 </Content>
             </Container>
         )

@@ -17,7 +17,9 @@ import {FooterTab,
   Title, 
   Content, 
   Footer, 
-  Text
+  Text,
+  View,
+  Fab
 } from 'native-base';
 
 export default class Main extends Component{
@@ -25,6 +27,7 @@ export default class Main extends Component{
     constructor(props){
         super(props);
         this.state = {
+        fabStatus: true,
         friendsTab: false,
         chatsTab: true,
         timeTab: false,

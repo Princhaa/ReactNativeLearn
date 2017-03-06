@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {AppRegistry, View, Image, Navigator} from 'react-native';
 import Main from './__pages/Main';
 import Login from './__pages/Login';
+import Register from './__pages/Register';
 
 
 class AwesomeProject extends Component {
@@ -12,6 +13,9 @@ class AwesomeProject extends Component {
       }
       if (route.name == 'Login'){
         return <Login navigator={navigator} />
+      }
+      if(route.name == 'Register'){
+        return <Register navigator={navigator} />
       }
     }
 
